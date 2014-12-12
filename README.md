@@ -2,7 +2,7 @@ Leaflet-CanvasMarker
 ====================
 
 Animated Marker on a HTML5 Canvas.
-Not really functional yet. Breaks when zooming zo much ;-)
+Not really functional yet. Breaks when zooming too much ;-)
 
 This project is basically just a experiment and not used anywhere.
 
