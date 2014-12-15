@@ -60,7 +60,6 @@ L.CanvasMarker = L.Marker.extend({
     drawCircle: function(context, x, y, radius) {
         context.beginPath();
         context.arc(x, y, radius, 0, 2 * Math.PI, false);
-        context.fillStyle = 'green';
         context.lineWidth = 3;
         context.strokeStyle = this.options.color;
         context.stroke();
@@ -84,18 +83,16 @@ L.CanvasMarker = L.Marker.extend({
         this.drawArc(context, x, y, radius, startAngle + Math.PI, endAngle + Math.PI);
         this.drawCircle(context, x, y, radius + 2);
         
-        var that = this;
         window.requestAnimFrame(function() {
-            that.animate(context, canvas, radius, i);
-        });
+            this.animate(context, canvas, radius, i);
+        }.bind(this));
     },
 
     catchEvents: function() {
         //display positions have to be recalculated if the map is zoomed
-        var that = this;
         this._map.on('zoomend', function() {
-            that.options.displayPos = that._map.latLngToContainerPoint(that._latlng);
-        });
+            this.options.displayPos = this._map.latLngToContainerPoint(this._latlng);
+        }.bind(this));
     },
 
     onRemove: function(map) {
